@@ -1,0 +1,11 @@
+ ************* Module assignment1
+ assignment1.py:1: convention (C0114, missing-module-docstring, ) Missing module docstring
+ assignment1.py:2: convention (C0411, wrong-import-order, ) standard import "import multiprocessing.dummy as mpd" should be placed before "from Bio import Entrez"
+ assignment1.py:3: convention (C0411, wrong-import-order, ) standard import "import multiprocessing as mp" should be placed before "from Bio import Entrez"
+ assignment1.py:4: convention (C0411, wrong-import-order, ) standard import "from time import sleep" should be placed before "from Bio import Entrez"
+ assignment1.py:5: convention (C0411, wrong-import-order, ) standard import "import sys" should be placed before "from Bio import Entrez"
+ 
+ ------------------------------------------------------------------
+ Your code has been rated at 8.15/10 (previous run: 6.94/10, +1.20)
+ 
+ 
