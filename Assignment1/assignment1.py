@@ -1,8 +1,10 @@
+from genericpath import exists
 from Bio import Entrez
 import multiprocessing.dummy as mpd
 import multiprocessing as mp
 from time import sleep
 import sys
+import os
 
 
 def get_reference_list(pubmed_id, db_from="pubmed"):
@@ -32,7 +34,10 @@ def todo(x):
     :return: None
     """
     handle = Entrez.efetch(db="pubmed", id=x, retmode="xml")
-    with open(x + ".xml", "wb") as xmlfile:
+    if not os.path.exists("output"):
+        os.makedirs("output")
+    print("Reaches")
+    with open("output/" + x + ".xml", "wb") as xmlfile:
         xmlfile.write(handle.read())
     sleep(10)
 
