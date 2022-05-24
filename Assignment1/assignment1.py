@@ -1,10 +1,19 @@
+"""
+file name : assignment 1
+file author : Kai-kai Lin
+Date : 2022.05.24
+Description :
+to get the reference data from given pubmed ID
+practicing the multiprocessing.
+"""
 from genericpath import exists
-from Bio import Entrez
-import multiprocessing.dummy as mpd
 import multiprocessing as mp
-from time import sleep
 import sys
+import multiprocessing.dummy as mpd
+from time import sleep
+from Bio import Entrez
 import os
+
 
 
 def get_reference_list(pubmed_id, db_from="pubmed"):
@@ -36,7 +45,6 @@ def todo(x):
     handle = Entrez.efetch(db="pubmed", id=x, retmode="xml")
     if not os.path.exists("output"):
         os.makedirs("output")
-    print("Reaches")
     with open("output/" + x + ".xml", "wb") as xmlfile:
         xmlfile.write(handle.read())
     sleep(10)
