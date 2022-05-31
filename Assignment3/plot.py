@@ -1,3 +1,10 @@
+"""
+file name : assignment 3
+file author : Kai-kai Lin
+Date : 2022.05.31
+Description :
+Plot the time-consuming of the same job in different number of cores.
+"""
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,4 +19,6 @@ with open("output/timings.txt") as r:
 y = np.array(y)
 x = np.array(x)
 plt.plot(x,y)
+plt.xlabel("cores")
+plt.ylabel("time")
 plt.savefig("output/timings.png")
