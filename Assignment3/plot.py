@@ -20,7 +20,6 @@ with open("output/timings.txt","r") as r:
 y = np.array(y)
 x = np.array(x)
 plt.plot(x,y)
-plt.xlabel("cores")
 plt.xlabel("core(s)")
 plt.ylabel("time")
 plt.savefig("output/timings.png")
