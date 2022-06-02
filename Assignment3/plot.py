@@ -12,11 +12,16 @@ with open("output/timings.txt","r") as r:
     y = []
     x = []
     for line in r:
-        if line.startswith(("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16")):
-            time = float(line.split()[-1])
-            x_axis = int(line.split()[0])
-            y.append(time)
-            x.append(x_axis)
+        #if line.startswith(("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16")):
+        #    time = float(line.split()[-1])
+        #    x_axis = int(line.split()[0])
+        #    y.append(time)
+        #    x.append(x_axis)
+        if line[0].isdigit():
+             time = float(line.split()[-1])
+             x_axis = int(line.split()[0])
+             y.append(time)
+             x.append(x_axis)
 y = np.array(y)
 x = np.array(x)
 plt.plot(x,y)
