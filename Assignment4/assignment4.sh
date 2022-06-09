@@ -17,4 +17,4 @@ seq 19 2 31 | parallel -j16 "velveth ${OUTPUT}/output/{} {} -longPaired -fastq -
 # parallel -j16 'velvetg ${OUTPUT}/output/{} -cov_cutoff auto -exp_cov auto' ::: 19 2 31
 seq 19 2 31 | parallel -j16 "velvetg ${OUTPUT}/output/{}"
 python3 assignment4.py
-rm -r ${OUTPUT}/output
+rm -rf ${OUTPUT}/output
