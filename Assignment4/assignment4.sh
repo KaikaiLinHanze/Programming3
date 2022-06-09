@@ -8,7 +8,7 @@
 export NGSDB_R1=/data/dataprocessing/MinIONData/MG5267/MG5267_TGACCA_L008_R1_001_BC24EVACXX.filt.fastq
 export NGSDB_R2=/data/dataprocessing/MinIONData/MG5267/MG5267_TGACCA_L008_R2_001_BC24EVACXX.filt.fastq
 export OUTPUT=/students/2021-2022/master/Kai_DSLS
-[ -d /students/2021-2022/master/Kai_DSLS/output ] || mkdir output
+[ -d ${OUTPUT}/output ] || mkdir ${OUTPUT}/output
 [ -d output ] || mkdir output
 
 #velveth directory hash_length {[-file_format][-read_type][-separate|-interleaved] filename1 [filename2 ...]} {...} [options]
