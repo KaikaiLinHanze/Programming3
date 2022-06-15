@@ -44,7 +44,7 @@ def get_N50():
 
 def to_csv(contif_output, N50_output):
     df = {'contif': contif_output, 'N50': N50_output} 
-    df = pd.DataFrame(df).to_csv("/output/output.csv")
+    df = pd.DataFrame(df).to_csv("output/output.csv")
 
 def get_the_best_file():
     data = pd.read_csv("output/output.csv")
