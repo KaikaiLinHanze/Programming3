@@ -1,0 +1,63 @@
+Command exited with non-zero status 1
+{1..16}	0.86
+1	1789.24
+Command terminated by signal 2
+2	452.54
+Command terminated by signal 2
+3	14.40
+Command terminated by signal 2
+4	36.25
+Command terminated by signal 2
+5	0.19
+Command terminated by signal 2
+6	0.27
+Command terminated by signal 2
+7	0.15
+Command terminated by signal 2
+8	0.14
+Command terminated by signal 2
+9	0.13
+Command terminated by signal 2
+10	0.13
+Command terminated by signal 2
+11	0.13
+Command terminated by signal 2
+12	0.14
+Command terminated by signal 2
+13	0.13
+Command terminated by signal 2
+14	0.14
+Command terminated by signal 2
+15	0.14
+Command exited with non-zero status 255
+1	3282.15
+Command exited with non-zero status 255
+2	1598.38
+Command exited with non-zero status 255
+3	1063.59
+Command exited with non-zero status 255
+4	801.95
+Command exited with non-zero status 255
+5	677.17
+Command exited with non-zero status 255
+6	571.42
+Command exited with non-zero status 255
+7	516.16
+Command exited with non-zero status 255
+8	451.77
+Command exited with non-zero status 255
+9	430.94
+Command exited with non-zero status 255
+10	407.28
+Command exited with non-zero status 255
+11	389.70
+Command exited with non-zero status 255
+12	373.14
+Command exited with non-zero status 255
+13	356.95
+Command exited with non-zero status 255
+14	344.63
+Command exited with non-zero status 255
+15	328.42
+Command exited with non-zero status 255
+16	315.91
