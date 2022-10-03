@@ -256,7 +256,8 @@ def main():
     model = ML_model(trainData,testData,"nb")
     cvModel = tuning_model(trainData,testData, "nb")
     end = time.time()
-    print(end-start)
+    print("For this assignment the run time is {end-start}.")
+    #10087.972507238388
     save_file(trainData,"/students/2021-2022/master/Kai_DSLS/trainData.pkl")
     save_file(testData,"/students/2021-2022/master/Kai_DSLS/testData.pkl")
     save_model(model,"/students/2021-2022/master/Kai_DSLS/NaiveBayesModel")
@@ -264,7 +265,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
