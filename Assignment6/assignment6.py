@@ -186,22 +186,22 @@ def tuning_model(trainData,testData, model_type="rf"):
 
     if model_type == "dtc":
         # create a model
-        dtc = DecisionTreeClassifier(labelCol="InterPro_index",
+        model = DecisionTreeClassifier(labelCol="InterPro_index",
                                     featuresCol="InterPro_features",
                                     predictionCol="prediction")  
         # Tuning
         paramGrid = (ParamGridBuilder()
-                    .addGrid(dtc.maxDepth, [2,4,6,8,10,12])
+                    .addGrid(model.maxDepth, [2,4,6,8,10,12])
                     .build())
 
     if model_type == "nb":
         # create a model
-        nb = NaiveBayes(modelType="multinomial",labelCol="InterPro_index",
+        model = NaiveBayes(modelType="multinomial",labelCol="InterPro_index",
                             featuresCol="InterPro_features",
                             predictionCol="prediction",)    
         # Tuning
         paramGrid = (ParamGridBuilder()
-                    .addGrid(nb.smoothing, [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0])
+                    .addGrid(model.smoothing, [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0])
                     .build())
 
     # evaluate the result
