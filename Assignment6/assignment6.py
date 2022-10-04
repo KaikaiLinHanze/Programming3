@@ -33,7 +33,8 @@ from pyspark.ml.feature import StringIndexer,VectorAssembler
 from pyspark.ml import Pipeline
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.ml.classification import DecisionTreeClassifier, NaiveBayes, RandomForestClassifier
-from pyspark.ml.tuning import CrossValidator, ParamGridBuilder 
+from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
+from pathlib import Path
 
 def create_df(path):
     """
@@ -160,7 +161,7 @@ def ML_model(trainData,testData,model_type="rf"):
                                                 metricName='accuracy')
 
     accuracy = evaluator.evaluate(predict)
-    print(f"Accuracy is {accuracy}")
+    print(f"Accuracy is {accuracy}.")
     return model
 
 def tuning_model(trainData,testData, model_type="rf"):
@@ -224,7 +225,7 @@ def tuning_model(trainData,testData, model_type="rf"):
     cvPredictions = cvModel.transform(testData)
 
     # Evaluate bestModel found from Cross Validation
-    print(evaluator.evaluate(cvPredictions))
+    print(f'The model accuracy after tuning is {evaluator.evaluate(cvPredictions)}.')
     return cvModel
 
 def save_file(df,path):
@@ -235,33 +236,52 @@ def save_file(df,path):
     return str
     """
     df.toPandas().set_index('InterPro_annotations_accession').to_pickle(path)
-    return print('file safe in{path}')
+    return print(f'file already saved in {path}')
 
-def save_model(model,path):
+def save_model(model,path,model_type="normal"):
     """
     it will help you to safe the model.
     model: spark model
-    paht: str, the location you want to save you model.
+    path: str, the location you want to save you model.
+    model_type: str, normal for basic; best for tuning model
     return str
     """
-    model.bestModel.write().overwrite().save(path)
-    return print('model safe in{path}')
+    if model_type == "normal":
+        model.write().overwrite().save(path)
+    if model_type == "best":
+        model.bestModel.write().overwrite().save(path)
+    return print(f'{model_type} model already saved in {path}')
 
-def main():
+def main(model_type="nb"):
+    """
+    It will run get the model type you want and output the model.
+    model_type: str, to select the model type you want 
+                rf for random forest; dtc for decision tree, nb for naive bayes
+    """
     start = time.time()
     df = create_df("/data/dataprocessing/interproscan/all_bacilli.tsv")
     small_df,large_df = data_preprocessing(df)
     ML_final = ML_df_create(small_df,large_df)    
     trainData,testData = split_data(ML_final,0.7)
-    model = ML_model(trainData,testData,"nb")
-    cvModel = tuning_model(trainData,testData, "nb")
+    model = ML_model(trainData,testData,model_type)
+    #RandomForest 0.19319
+    #DecisionTree 0.09156
+    #NaiveBayes   0.78229
+    cvModel = tuning_model(trainData,testData, model_type)
+    #RandomForest 0.30174
+    #DecisionTree 0 it take more than 14 hours for tuning...
+    #NaiveBayes   0.84760
     end = time.time()
-    print("For this assignment the run time is {end-start}.")
-    #10087.972507238388
-    save_file(trainData,"/students/2021-2022/master/Kai_DSLS/trainData.pkl")
-    save_file(testData,"/students/2021-2022/master/Kai_DSLS/testData.pkl")
-    save_model(model,"/students/2021-2022/master/Kai_DSLS/NaiveBayesModel")
-    save_model(cvModel,"/students/2021-2022/master/Kai_DSLS/NaiveBayesBestModel")
+    print(f"For this assignment the run time is {(end-start)/60/60} hr.")
+    #RandomForest 6.24520 hr
+    #DecisionTree more than 14 hr
+    #NaiveBayes   3.23886 hr
+    if Path("/students/2021-2022/master/Kai_DSLS/trainData.pkl").is_file() == 0:
+        save_file(trainData,"/students/2021-2022/master/Kai_DSLS/trainData.pkl")
+    if Path("/students/2021-2022/master/Kai_DSLS/testData.pkl").is_file() == 0:
+        save_file(testData,"/students/2021-2022/master/Kai_DSLS/testData.pkl")
+    save_model(model, f"/students/2021-2022/master/Kai_DSLS/{model_type}Model", "normal")
+    save_model(cvModel,f"/students/2021-2022/master/Kai_DSLS/{model_type}BestModel","best")
 
 if __name__ == '__main__':
-    main()
+    main("nb")
