@@ -17,7 +17,7 @@ The only command-line argument you need is a query PubMed ID to ask Entrez about
 
 The script can be called as follows:
 
-python3 assignment1.py <pubmed_id>
+        python3 assignment1.py <pubmed_id>
 
 ## 4. Output
 
