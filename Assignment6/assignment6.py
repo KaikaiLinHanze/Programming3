@@ -269,12 +269,12 @@ def main(model_type="nb"):
     #NaiveBayes   0.78229
     cvModel = tuning_model(trainData,testData, model_type)
     #RandomForest 0.30174
-    #DecisionTree 0 it take more than 14 hours for tuning...
+    #DecisionTree 0.13698
     #NaiveBayes   0.84760
     end = time.time()
     print(f"For this assignment the run time is {(end-start)/60/60} hr.")
     #RandomForest 6.24520 hr
-    #DecisionTree more than 14 hr
+    #DecisionTree No correct time, running time more than 24 hr
     #NaiveBayes   3.23886 hr
     if Path("/students/2021-2022/master/Kai_DSLS/trainData.pkl").is_file() == 0:
         save_file(trainData,"/students/2021-2022/master/Kai_DSLS/trainData.pkl")
