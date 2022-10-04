@@ -12,7 +12,7 @@ The script needs to download "numberofarticles" which are referenced by "STARTIN
 The script needs to analyze the XML of each of the references further to extract all the authors of the article. 
 It should save the authors in a Python tuple and use the Pickle module to save it to the disk as output/PUBMED_ID.authors.pickle where PUBMEDID is of course the pubmed ID of the article in question.
 
-assignment2.py -n <number_of_peons_per_client> [-c | -s] --port <portnumber> --host <serverhost> -a <number_of_articles_to_download> STARTING_PUBMED_ID
+        assignment2.py -n <number_of_peons_per_client> [-c | -s] --port <portnumber> --host <serverhost> -a <number_of_articles_to_download> STARTING_PUBMED_ID
 
 NB1: if you only specify "localhost" then all processes are run on one computer (good for testing)
 
