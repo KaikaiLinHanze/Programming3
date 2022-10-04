@@ -15,5 +15,7 @@ It should save the authors in a Python tuple and use the Pickle module to save i
 assignment2.py -n <number_of_peons_per_client> [-c | -s] --port <portnumber> --host <serverhost> -a <number_of_articles_to_download> STARTING_PUBMED_ID
 
 NB1: if you only specify "localhost" then all processes are run on one computer (good for testing)
+
 NB2: if you want to run truly networked, specify at least two hosts: the first one is assumed to run the server process, all hosts after that are clients
+
 NB3: you need to both save the downloaded xml files and communicate the reference PUBMEDs back to the server
